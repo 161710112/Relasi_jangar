@@ -1,0 +1,63 @@
+@extends('layouts.app')
+@section('content')
+<div class="row">
+	<div class="container">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+			  <div class="panel-heading">Edit Data Guru 
+			  	<div class="panel-title pull-right"><a href="{{ url()->previous() }}">Kembali</a>
+			  	</div>
+			  </div>
+			  <div class="panel-body">
+			  	<form action="{{ route('guru.update',$a->id) }}" method="post" >
+			  		<input name="_method" type="hidden" value="PATCH">
+        			{{ csrf_field() }}
+			  		<div class="form-group {{ $errors->has('nama') ? ' has-error' : '' }}">
+			  			<label class="control-label">Nama</label>	
+			  			<input type="text" name="nama" class="form-control" value="{{ $a->nama }}"  required>
+			  			@if ($errors->has('nama'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('nama') }}</strong>
+                            </span>
+                        @endif
+			  		</div>
+
+			  		<div class="form-group {{ $errors->has('nipd') ? ' has-error' : '' }}">
+			  			<label class="control-label">NIPD</label>	
+			  			<input type="text" name="nipd" class="form-control" value="{{ $a->nipd }}"  required>
+			  			@if ($errors->has('nipd'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('nipd') }}</strong>
+                            </span>
+                        @endif
+			  		</div>
+
+			  		<div class="form-group {{ $errors->has('alamat') ? ' has-error' : '' }}">
+			  			<label class="control-label">Alamat</label>alamat			  			
+			  			<input type="text" name="alamat" class="form-control" value="{{ $a->alamat }}"  required>
+			  			@if ($errors->has('alamat'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('alamat') }}</strong>
+                            </span>
+                        @endif
+			  		</div>
+
+			  		<div class="form-group {{ $errors->has('mata_pelajaran') ? ' has-error' : '' }}">
+			  			<label class="control-label">Mata Pelajaran</label>	
+			  			<input type="text" name="mata_pelajaran" class="form-control" value="{{ $a->mata_pelajaran }}"  required>
+			  			@if ($errors->has('mata_pelajaran'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('mata_pelajaran') }}</strong>
+                            </span>
+                        @endif
+			  		</div>
+			  		<div class="form-group">
+			  			<button type="submit" class="btn btn-primary">Tambah</button>
+			  		</div>
+			  	</form>
+			  </div>
+			</div>	
+		</div>
+	</div>
+</div>
+@endsection
